@@ -1,9 +1,7 @@
 #include "GameCommand.h"
 
-GameCommand::GameCommand()
+GameCommand::GameCommand() : m_command(CommandType::NOTHING), m_targetRotation(0.0f)
 {
-	m_targetRotation = 0;
-	m_command = CommandType::NOTHING;
 }
 
 GameCommand::GameCommand(CommandType command, float targetRotation) :
@@ -11,9 +9,7 @@ GameCommand::GameCommand(CommandType command, float targetRotation) :
 {
 }
 
-GameCommand::~GameCommand()
-{
-}
+GameCommand::~GameCommand() = default;
 
 std::string GameCommand::serialize() {
 	std::string s = "";
