@@ -12,6 +12,8 @@ struct GameObject {
     float cooldown;
 };
 
+float normalizedRot(float gameRot);
+
 float distance(const GameObject& lhs, const GameObject& rhs);
 
 float absoluteRotation(const GameObject& lhs, const GameObject& rhs);

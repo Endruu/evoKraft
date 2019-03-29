@@ -11,8 +11,6 @@ class SpaceShip : public GameObject
 public:
     SpaceShip(int id_);
 
-    bool isItMe(const GameObject& obj) const;
-
     void refreshState(const GameState& state);
 
     GameCommand rotateTowards(const GameObject& obj) const;

@@ -8,11 +8,6 @@ SpaceShip::SpaceShip(int id_)
     id = id_;
 }
 
-bool SpaceShip::isItMe(const GameObject& obj) const
-{
-    return obj.id == id;
-}
-
 void SpaceShip::refreshState(const GameState& state)
 {
     gameState = state;
