@@ -1,5 +1,7 @@
 #pragma once
 
+#define PI 3.14
+
 struct GameObject {
     float x;
     float y;

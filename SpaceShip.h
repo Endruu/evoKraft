@@ -29,8 +29,7 @@ public:
     GameCommand calculateNextStep();
 
     void detectDanger();
-
-    void willHitUs(std::vector<GameObject> otherObjects);
+    bool willHitUs(std::vector<GameObject> otherObjects, float x, float y);
     void searchNewPos();
 
 

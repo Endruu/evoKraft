@@ -86,24 +86,22 @@ GameCommand SpaceShip::calculateNextStep()
     {
         return rotateTowards(target);
     }
-
-
 }
 
 void SpaceShip::detectDanger()
 {
-    willHitUs(gameState.lasers);
-    searchNewPos();
+    if (willHitUs(gameState.lasers,x,y))
+        searchNewPos();
 }
 
-void SpaceShip::willHitUs(std::vector<GameObject> otherObject)
+bool SpaceShip::willHitUs(std::vector<GameObject> otherObjct,float x, float y)
 {
-    if (otherObject.size() <= 0)
-        return;
+    if (otherObjct.size() <= 0)
+        return false;
 
 
     float hitDistance = 0;
-    for each (GameObject var in otherObject)
+    for each (GameObject var in otherObjct)
     {
         hitDistance = ((var.vy - var.y) * x - (var.vx - var.x) * y
             + var.vx * var.y - var.vy * var.x)
@@ -112,19 +110,33 @@ void SpaceShip::willHitUs(std::vector<GameObject> otherObject)
         {
             //pray
             danger = true;
-            return;
+            return true;
         }
     }
 }
 void SpaceShip::searchNewPos()
 {
+    float newX = 0;
+    float newY = 0;
+    // behind of us
+    newX = x + avoidLazerDistance * cos(rotation * PI);
+    newY = y + avoidLazerDistance * sin(rotation * PI);
+    if(!willHitUs(gameState.lasers,newX,newY))
+    {
+        // set coordinates to move
+        avoidDangerX = newX;
+        avoidDangerY = newY;
+    }
 
-  if (abs(relativeRotation(*this, target)) < 0.1)
-  {
-    return shoot();
-  }
-  else
-  {
-    return rotateTowards(target);
-  }
+    // ahead of us
+    newX = x + avoidLazerDistance * cos(rotation);
+    newY = y + avoidLazerDistance * sin(rotation);
+    if (!willHitUs(gameState.lasers, newX, newY))
+    {
+        // set coordinates to move
+        avoidDangerX = newX;
+        avoidDangerY = newY;
+    }
+
+
 }
