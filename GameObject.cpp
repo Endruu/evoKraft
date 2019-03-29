@@ -21,6 +21,11 @@ float distance(const GameObject& lhs, const GameObject& rhs)
   return sqrt(pow(lhs.x - rhs.x, 2) + pow(lhs.y - rhs.y, 2)) - lhs.radius - rhs.radius;
 }
 
+float distance(const float x1, const float y1, const float x2, const float y2)
+{
+  return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
+}
+
 float absoluteRotation(const GameObject& lhs, const GameObject& rhs)
 {
   return -atan2((lhs.y - rhs.y), (lhs.x - rhs.x)) * 57.2957795f - 90.0f;

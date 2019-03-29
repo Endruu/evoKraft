@@ -16,6 +16,8 @@ float normalizedRot(float gameRot);
 
 float distance(const GameObject& lhs, const GameObject& rhs);
 
+float distance(const float x1, const float y1, const float x2, const float y2);
+
 float absoluteRotation(const GameObject& lhs, const GameObject& rhs);
 
 float absoluteRotation(const GameObject& lhs, float x, float y);
