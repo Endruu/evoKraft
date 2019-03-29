@@ -26,6 +26,8 @@ public:
     void detectDanger();
 
     void willHitUs(std::vector<GameObject> otherObjects);
+    void searchNewPos();
+
 
 private:
 

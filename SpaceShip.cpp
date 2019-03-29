@@ -79,7 +79,7 @@ GameCommand SpaceShip::calculateNextStep()
 
 void SpaceShip::detectDanger()
 {
-    willHitUs();
+    willHitUs(gameState.lasers);
     searchNewPos();
 }
 
@@ -102,4 +102,8 @@ void SpaceShip::willHitUs(std::vector<GameObject> otherObject)
             return;
         }
     }
+}
+void SpaceShip::searchNewPos()
+{
+
 }
