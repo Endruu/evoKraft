@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	std::string port = "8124";
 
 	std::string teamName = "evoKulacs";
-	std::string instanceName = "iowaspace";
+	std::string instanceName = "iss";
 
 	if (argc > 1) {
 		instanceName = argv[1];
