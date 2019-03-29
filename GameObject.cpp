@@ -8,12 +8,7 @@ float normalizedRot(float gameRot)
 	while (gameRot >= 270.0f) gameRot -= 360.0f;
 	while (gameRot < -90.0f) gameRot += 360.0f;
 
-	auto ret = pi / 180.0f * (90.0f - gameRot);
-
-	/*while (ret > pi) ret -= pi;
-	while (ret <= -pi) ret += pi;*/
-
-	return ret;
+	return pi / 180.0f * (90.0f - gameRot);
 }
 
 float distance(const GameObject& lhs, const GameObject& rhs)

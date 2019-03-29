@@ -35,7 +35,7 @@ GameCommand SpaceShip::rotateTowards(const GameObject& obj) const
     if (abs(m_lastAbsoluteTargetRotation - absoluteRotation(*this, obj)) < 0.0001)
     {
         std::cout << "NOTHING" << std::endl;
-        return GameCommand(GameCommand::NOTHING);
+        return GameCommand::nothing();
     }
 
     m_lastAbsoluteTargetRotation = absoluteRotation(*this, obj);
@@ -47,12 +47,12 @@ GameCommand SpaceShip::rotateTowards(const GameObject& obj) const
 
 GameCommand SpaceShip::shoot() const
 {
-    return GameCommand(GameCommand::FIRE);
+    return GameCommand::fire();
 }
 
 GameCommand SpaceShip::calculateNextStep()
 {
-    if (gameState.turrets.size() == 0) return GameCommand(GameCommand::NOTHING);
+    if (gameState.turrets.size() == 0) return GameCommand::nothing();
 
     GameObject target = gameState.turrets[0];
     for (const auto& turret : gameState.turrets)

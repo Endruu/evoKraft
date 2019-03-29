@@ -24,6 +24,15 @@ public:
 
 	std::string serialize();
 
+    static GameCommand nothing() { return GameCommand{ GameCommand::NOTHING }; };
+    static GameCommand stopAcceleration() { return GameCommand{ GameCommand::STOPACCELERATION }; };
+    static GameCommand accelerate() { return GameCommand{ GameCommand::ACCELERATE }; };
+    static GameCommand decelerate() { return GameCommand{ GameCommand::DECELERATE }; };
+    static GameCommand rotateLeft(float);
+    static GameCommand rotateRight(float);
+    static GameCommand stopRotation() { return GameCommand{ GameCommand::STOPROTATION }; };
+    static GameCommand fire() { return GameCommand{ GameCommand::FIRE }; };
+
 	CommandType m_command;
 	float m_targetRotation;
 };

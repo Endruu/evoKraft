@@ -32,3 +32,19 @@ std::string GameCommand::serialize() {
 	}
 	return s;
 }
+
+float toGameRot(float rot)
+{
+    static const auto pi = std::atan(1.0f) * 4.0f;
+    return 90.0f - 180.0f * rot / pi;
+}
+
+GameCommand GameCommand::rotateLeft(float rot)
+{
+    return GameCommand(GameCommand::ROTATELEFT, toGameRot(rot));
+}
+
+GameCommand GameCommand::rotateRight(float rot)
+{
+    return GameCommand(GameCommand::ROTATERIGHT, toGameRot(rot));
+}
