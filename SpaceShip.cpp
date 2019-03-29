@@ -73,4 +73,33 @@ GameCommand SpaceShip::calculateNextStep()
     {
         return rotateTowards(target);
     }
+
+
+}
+
+void SpaceShip::detectDanger()
+{
+    willHitUs();
+    searchNewPos();
+}
+
+void SpaceShip::willHitUs(std::vector<GameObject> otherObject)
+{
+    if (otherObject.size() <= 0)
+        return;
+
+
+    float hitDistance = 0;
+    for each (GameObject var in otherObject)
+    {
+        hitDistance = ((var.vy - var.y) * x - (var.vx - var.x) * y
+            + var.vx * var.y - var.vy * var.x)
+            / sqrt(pow(var.vy - var.y, 2) + pow(var.vx - var.x, 2));
+        if (hitDistance < avoidLazerDistance)
+        {
+            //pray
+            danger = true;
+            return;
+        }
+    }
 }
