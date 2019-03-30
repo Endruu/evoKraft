@@ -21,6 +21,8 @@ public:
 
     GameCommand move(float x, float y);
 
+	bool isCoveredByObstacles(const GameObject& target) const;
+
     bool isAccelerating() const { return m_accelerating; }
     bool isRotating() const { return m_rotating; }
     bool isMoving() const { return m_moving; }
