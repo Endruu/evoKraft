@@ -125,7 +125,7 @@ GameCommand SpaceShip::calculateNextStep()
 	GameObject target = gameState.turrets[0];
 	for (const auto& turret : gameState.turrets)
 	{
-		if (abs(relativeRotation(*this, turret)) < abs(relativeRotation(*this, target)))
+		if (abs(relativeRotation(*this, turret)) < abs(relativeRotation(*this, target)) && !isCoveredByObstacles(target))
 		{
 			target = turret;
 		}
