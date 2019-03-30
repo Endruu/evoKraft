@@ -21,19 +21,9 @@ float distance(const GameObject& lhs, const GameObject& rhs)
 	return distance(lhs.x, lhs.y, rhs.x, rhs.y) - lhs.radius - rhs.radius;
 }
 
-float distanceFromLine(float x1, float y1, float x2, float y2, float xp, float yp)
+float distanceFromLine(const Line& line, float xp, float yp)
 {
-	const auto A = y2 - y1;
-	const auto B = x1 - x2;
-
-	if (A == 0.0f && B == 0.0f)	// degenerate case of a point
-	{
-		return distance(x1, y1, xp, yp);
-	}
-
-	const auto C = -(A * x1 + B * y1);
-
-	return abs(A * xp + B * yp + C) / sqrt(A * A + B * B);
+	return abs(line.A * xp + line.B * yp + line.C) / sqrt(line.A * line.A + line.B * line.B);
 }
 
 float absoluteRotation(const GameObject& lhs, const GameObject& rhs)
@@ -73,4 +63,9 @@ bool reverseRotation(const GameObject& me, float& x, float& y)
 		return true;
 	}
 	return false;
+}
+
+Line::Line(float x1, float y1, float x2, float y2) :
+	A(y2 - y1), B(x1 - x2), C(-(A * x1 + B * y1))
+{
 }

@@ -32,15 +32,16 @@ TEST_CASE("absoluteRotation")
 
 TEST_CASE("distanceFromLine")
 {
-	CHECK(distanceFromLine(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f) == 0.0f);
-	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 0.0f, 5.0f, 0.0f) == 0.0f);
-	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 0.0f, 5.0f, 5.0f) == 5.0f);
-	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 0.0f, 5.0f, 15.0f) == 15.0f);
-	CHECK(distanceFromLine(0.0f, 5.0f, 10.0f, 5.0f, 5.0f, 15.0f) == 10.0f);
-	CHECK(distanceFromLine(0.0f, -5.0f, -10.0f, -5.0f, -5.0f, -15.0f) == 10.0f);
-	CHECK(distanceFromLine(0.0f, 5.0f, 10.0f, 5.0f, 7.0f, 0.0f) == 5.0f);
-	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 10.0f, 10.0f, 0.0f) == 5.0f*sqrt(2.0f));
-	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 10.0f, 20.0f, 20.0f) == 0.0f);
+
+	CHECK(std::isnan(distanceFromLine(Line(0.0f, 0.0f, 0.0f, 0.0f), 0.0f, 0.0f)));
+	CHECK(distanceFromLine(Line(0.0f, 0.0f, 10.0f, 0.0f), 5.0f, 0.0f) == 0.0f);
+	CHECK(distanceFromLine(Line(0.0f, 0.0f, 10.0f, 0.0f), 5.0f, 5.0f) == 5.0f);
+	CHECK(distanceFromLine(Line(0.0f, 0.0f, 10.0f, 0.0f), 5.0f, 15.0f) == 15.0f);
+	CHECK(distanceFromLine(Line(0.0f, 5.0f, 10.0f, 5.0f), 5.0f, 15.0f) == 10.0f);
+	CHECK(distanceFromLine(Line(0.0f, -5.0f, -10.0f, -5.0f), -5.0f, -15.0f) == 10.0f);
+	CHECK(distanceFromLine(Line(0.0f, 5.0f, 10.0f, 5.0f), 7.0f, 0.0f) == 5.0f);
+	CHECK(distanceFromLine(Line(0.0f, 0.0f, 10.0f, 10.0f), 10.0f, 0.0f) == 5.0f*sqrt(2.0f));
+	CHECK(distanceFromLine(Line(0.0f, 0.0f, 10.0f, 10.0f), 20.0f, 20.0f) == 0.0f);
 }
 
 #endif

@@ -63,9 +63,10 @@ GameCommand SpaceShip::move(float x, float y)
 
 bool SpaceShip::isCoveredByObstacles(const GameObject& target) const
 {
-	return std::find_if(gameState.obstacles.begin(), gameState.obstacles.end(), [this, &target](const GameObject& obs)
+	const auto line = Line(x, y, target.x, target.y);
+	return std::find_if(gameState.obstacles.begin(), gameState.obstacles.end(), [this, &line](const GameObject& obs)
 	{
-		return distanceFromLine(x, y, target.x, target.y, obs.x, obs.y) < obs.radius;
+		return distanceFromLine(line, obs.x, obs.y) < obs.radius;
 	}) != gameState.obstacles.end();
 }
 
