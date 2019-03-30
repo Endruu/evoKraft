@@ -9,7 +9,7 @@
 class SpaceShip : public GameObject
 {
 public:
-    SpaceShip(int id_);
+    SpaceShip(int id, int mapHeight, int mapWidth);
 
     void refreshState(const GameState& state);
 
@@ -36,6 +36,8 @@ private:
     bool m_rotating{ false };
     bool m_moving{ false };
     bool m_reversed{ false };
+
+	struct { float high, low, left, right; } const limits;
 
     mutable float m_lastAbsoluteTargetRotation = 0.0f;
 };

@@ -3,9 +3,10 @@
 #include <algorithm>
 #include <iostream>
 
-SpaceShip::SpaceShip(int id_)
+SpaceShip::SpaceShip(int id_, int mapHeight, int mapWidth) :
+	limits{ mapHeight / 2.0f, -mapHeight / 2.0f, -mapWidth / 2.0f, mapWidth / 2.0f }
 {
-    id = id_;
+	id = id_;
 }
 
 void SpaceShip::refreshState(const GameState& state)
