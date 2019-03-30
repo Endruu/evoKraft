@@ -26,6 +26,11 @@ float distanceFromLine(const Line& line, float xp, float yp)
 	return abs(line.A * xp + line.B * yp + line.C) / sqrt(line.A * line.A + line.B * line.B);
 }
 
+float distance(const float x1, const float y1, const float x2, const float y2)
+{
+  return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
+}
+
 float absoluteRotation(const GameObject& lhs, const GameObject& rhs)
 {
 	return absoluteRotation(lhs, rhs.x, rhs.y);

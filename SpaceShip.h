@@ -15,9 +15,11 @@ public:
 
     GameCommand rotateTowards(const GameObject& obj) const;
 
+    GameCommand rotateTowards(const float x, const float y) const;
+
     GameCommand shoot() const;
 
-    GameCommand moveTowards(const float x, const float y) const;
+    GameCommand moveTowards(const float x, const float y);
 
     GameCommand move(float x, float y);
 
@@ -32,7 +34,11 @@ public:
 
 private:
 
-    GameState gameState;
+    GameState gameState;    
+
+    float startX;
+    float startY;
+    bool startSet{ false };
 
     bool m_accelerating{ false };
     bool m_rotating{ false };
@@ -42,4 +48,7 @@ private:
 	struct { float high, low, left, right; } const limits;
 
     mutable float m_lastAbsoluteTargetRotation = 0.0f;
+
+    float avoidDangerX;
+    float avoidDangerY;
 };
