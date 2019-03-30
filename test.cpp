@@ -30,4 +30,17 @@ TEST_CASE("absoluteRotation")
     CHECK(absoluteRotation(go, 0.0f, 1.0f) == pi / 2.0f);
 }
 
+TEST_CASE("distanceFromLine")
+{
+	CHECK(distanceFromLine(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f) == 0.0f);
+	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 0.0f, 5.0f, 0.0f) == 0.0f);
+	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 0.0f, 5.0f, 5.0f) == 5.0f);
+	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 0.0f, 5.0f, 15.0f) == 15.0f);
+	CHECK(distanceFromLine(0.0f, 5.0f, 10.0f, 5.0f, 5.0f, 15.0f) == 10.0f);
+	CHECK(distanceFromLine(0.0f, -5.0f, -10.0f, -5.0f, -5.0f, -15.0f) == 10.0f);
+	CHECK(distanceFromLine(0.0f, 5.0f, 10.0f, 5.0f, 7.0f, 0.0f) == 5.0f);
+	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 10.0f, 10.0f, 0.0f) == 5.0f*sqrt(2.0f));
+	CHECK(distanceFromLine(0.0f, 0.0f, 10.0f, 10.0f, 20.0f, 20.0f) == 0.0f);
+}
+
 #endif
